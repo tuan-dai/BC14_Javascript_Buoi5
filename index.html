@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript buoi 5</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- BAI TAP 1: QUAN LY TUYEN SINH     -->
+    <section class="container w-50 mx-auto my-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Bài tập 1: Quản lý tuyển sinh</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label>Điểm chuẩn</label> <br>
+                    <input type="number" id="diemChuan" class="form-control" value="25">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Điểm Toán</label> <br>
+                    <input type="number" id="diemToan" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Điểm Lý</label> <br>
+                    <input type="number" id="diemLy" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Điểm Hoá</label> <br>
+                    <input type="number" id="diemHoa" class="form-control">
+                </div>
+
+                <div class="chonKhuVuc">
+                    <label>Khu vực (Nhập X nếu không thuộc khu vực ưu tiên)</label>
+                    <select class="form-select form-select-lg mb-3" name="khuVuc" id="khuVuc">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>X</option>
+                    </select>
+                </div>
+
+                <div class="chonDoiTuong">
+                    <label>Đối tượng</label>
+                    <select class="form-select form-select-lg mb-3" name="doiTuong" id="doiTuong">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <button onclick="tinhDiem()" class="btn btn-primary">Kết quả</button>
+            </div>
+
+            <div id="divKetQua">
+                <h4 class="mx-3">Kết Quả:
+                    <span id="ketQua"></span><br>
+                </h4>
+                <h4 class="mx-3">Tổng điểm:
+                    <span id="tongDiem"></span>
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAI TAP 2: TINH TIEN DIEN      -->
+    <section class="container w-50 mx-auto my-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Bài tập 2: Tính tiền điện</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label>Tên Khách hàng</label> <br>
+                    <input type="text" id="tenKH" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Số Kw</label> <br>
+                    <input type="number" id="soKW" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-3">
+                <button onclick="soTienDien()" class="btn btn-primary">Tiền Điện</button>
+            </div>
+
+            <div id="divHienThi">
+                <h4 class="mx-3">Tiền điện:
+                    <span id="hienThi"></span> vnd
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAI TAP 3: TINH THUE THU NHAP CA NHAN      -->
+    <section class="container w-50 mx-auto my-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Bài tập 3: Tính thuế thu nhập cá nhân</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label>Họ & tên</label> <br>
+                    <input type="text" id="hoTen" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Tổng thu nhập năm (triệu)</label> <br>
+                    <input type="number" id="thuNhapNam" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Số người phụ thuộc</label> <br>
+                    <input type="number" id="soPhuThuoc" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-3">
+                <button onclick="tinhSoThue()" class="btn btn-primary">Tiền thuế</button>
+            </div>
+
+            <div id="divTienThue" style="display: none;">
+                <h4 class="mx-3">Tiền thuế:
+                    <span id="tienThue"></span> triệu
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAI TAP 4: TINH TIEN CAP -->
+    <section class="container w-50 mx-auto my-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Bài tập 4: Tính tiền cáp</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label>Mã khách hàng</label> <br>
+                    <input type="number" id="maKH" class="form-control">
+                </div>
+
+                <div class="chonKH">
+                    <label>Loại khách hàng</label><br>
+                    <select class="form-select form-select-lg mb-3" name="loaiKH" id="loaiKH">
+                        <option value="nhaDan">Nhà Dân</option>
+                        <option value="doanhNghiep">Doanh Nghiệp</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Số kết nối</label> <br>
+                    <input type="number" id="soKetNoi" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Số kênh cao cấp</label> <br>
+                    <input type="number" id="soKenhCC" class="form-control">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-3">
+                <button onclick="tinhTienCap()" class="btn btn-primary">Tiền cáp</button>
+            </div>
+
+            <div id="divTienCap" style="display: none;">
+                <h4 class="mx-3">Tiền cáp:
+                    <span id="tienCap"></span> $
+                </h4>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/bai1.js"></script>
+    <script src="./js/bai2.js"></script>
+    <script src="./js/bai3.js"></script>
+    <script src="./js/bai4.js"></script>
+</body>
+
+</html>

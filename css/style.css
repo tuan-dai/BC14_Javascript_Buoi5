@@ -1,0 +1,13 @@
+.khuVuc ul, .doiTuong ul{
+    list-style: none;
+}
+.khuVuc li, .doiTuong li{
+    display: inline;
+    margin-right: 20px;
+}
+#divKetQua, #divHienThi{
+    display: none;
+}
+.chonKH {
+    margin-bottom: 10px;
+}
